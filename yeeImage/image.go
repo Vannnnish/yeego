@@ -5,7 +5,6 @@
 package yeeImage
 
 import (
-	"code.google.com/p/graphics-go/graphics"
 	"errors"
 	"github.com/nfnt/resize"
 	"github.com/oliamb/cutter"
@@ -15,7 +14,6 @@ import (
 	"image/gif"
 	"image/jpeg"
 	"image/png"
-	"math"
 	"os"
 	"path"
 	"strings"
@@ -142,35 +140,6 @@ func ThumbImage(inputImagePath, outputImagePath string, maxWidth, maxHeight uint
 		}
 	default:
 		return errors.New("图片后缀错误，请传入jpg,jpeg,png,gif后缀的图片")
-	}
-	return nil
-}
-
-// RotateImage
-// 图片旋转，顺时针
-func RotateImage(inputImagePath, outputImagePath string, angle float64) error {
-	imageExt := path.Ext(inputImagePath)
-	if !(imageExt == ".png" || imageExt == ".jpg" || imageExt == ".jpeg" || imageExt == ".gif") {
-		return errors.New("图片后缀错误，请传入jpg,jpeg,png,gif后缀的图片")
-	}
-	srcImage, err := LoadImage(inputImagePath)
-	if err != nil {
-		return err
-	}
-	w, h, err := GetImageInfo(inputImagePath)
-	if err != nil {
-		return err
-	}
-	newWidth := float64(w)*math.Cos(angle) + float64(h)*math.Sin(angle)
-	newHeight := float64(w)*math.Sin(angle) + float64(h)*math.Cos(angle)
-	dstImage := image.NewRGBA(image.Rect(0, 0, int(newWidth), int(newHeight)))
-	err = graphics.Rotate(dstImage, srcImage, &graphics.RotateOptions{Angle: angle})
-	if err != nil {
-		return err
-	}
-	err = SaveImage(outputImagePath, dstImage)
-	if err != nil {
-		return err
 	}
 	return nil
 }
