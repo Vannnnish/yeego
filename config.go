@@ -2,6 +2,7 @@ package yeego
 
 import (
 	"fmt"
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 	"github.com/yeeyuntech/yeego/yeeFile"
 	"os"
@@ -29,6 +30,13 @@ func MustInitConfig(filePath string, fileName string) {
 	if err := Config.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err).Error())
 	}
+}
+
+func WatchConfig() {
+	Config.WatchConfig()
+	Config.OnConfigChange(func(e fsnotify.Event) {
+		fmt.Println("Config file changed:", e.Name)
+	})
 }
 
 var WORK_PATH string
