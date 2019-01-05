@@ -21,13 +21,13 @@ func ReadExcel(filePath string) ([]string, [][]string, error) {
 		for k, row := range sheet.Rows {
 			if k == 0 {
 				for _, cell := range row.Cells {
-					str, _ := cell.String()
+					str := cell.String()
 					firstRow = append(firstRow, str)
 				}
 			} else {
 				otherRow := make([]string, 0)
 				for _, cell := range row.Cells {
-					str, _ := cell.String()
+					str := cell.String()
 					otherRow = append(otherRow, str)
 				}
 				otherRows = append(otherRows, otherRow)
