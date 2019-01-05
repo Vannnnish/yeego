@@ -26,8 +26,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/yeeyuntech/yeego/yeeFile"
-	"github.com/yeeyuntech/yeego/yeeStrings"
+	"yeego/yeeFile"
+	"yeego/yeeStrings"
 )
 
 var (

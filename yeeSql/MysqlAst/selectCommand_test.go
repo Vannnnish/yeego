@@ -5,7 +5,7 @@
 package MysqlAst
 
 import (
-	"github.com/yeeyuntech/yeego"
+	"yeego"
 	"testing"
 )
 

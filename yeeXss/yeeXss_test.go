@@ -5,7 +5,7 @@
 package yeeXss
 
 import (
-	"github.com/yeeyuntech/yeego"
+	"yeego"
 	"testing"
 )
 

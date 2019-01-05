@@ -5,7 +5,7 @@
 package yeeCmd
 
 import (
-	"github.com/yeeyuntech/yeego"
+	"yeego"
 	"testing"
 )
 

@@ -7,7 +7,7 @@ package yeeArchive
 import (
 	"archive/tar"
 	"compress/gzip"
-	"github.com/yeeyuntech/yeego/yeeFile"
+	"yeego/yeeFile"
 	"io"
 	"os"
 	"path"

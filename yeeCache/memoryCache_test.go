@@ -4,7 +4,7 @@
 package yeeCache
 
 import (
-	"github.com/yeeyuntech/yeego"
+	"yeego"
 	"testing"
 	"time"
 )

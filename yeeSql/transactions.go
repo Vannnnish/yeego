@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"github.com/yeeyuntech/yeego/yeeSql/MysqlAst"
+	"yeego/yeeSql/MysqlAst"
 	"strings"
 )
 

@@ -6,7 +6,7 @@ package yeeStrings
 
 import (
 	"bytes"
-	"github.com/yeeyuntech/yeego/yeeStrconv"
+	"yeego/yeeStrconv"
 	"regexp"
 	"strconv"
 	"strings"

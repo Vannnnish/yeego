@@ -4,8 +4,8 @@
 package yeeFile_test
 
 import (
-	"github.com/yeeyuntech/yeego"
-	"github.com/yeeyuntech/yeego/yeeFile"
+	"yeego"
+	"yeego/yeeFile"
 	"testing"
 )
 

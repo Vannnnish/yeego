@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"github.com/yeeyuntech/yeego/yeeFile"
+	"yeego/yeeFile"
 	"os"
 	"path/filepath"
 	"strings"

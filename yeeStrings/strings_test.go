@@ -5,8 +5,8 @@
 package yeeStrings_test
 
 import (
-	"github.com/yeeyuntech/yeego"
-	"github.com/yeeyuntech/yeego/yeeStrings"
+	"yeego"
+	"yeego/yeeStrings"
 	"testing"
 )
 

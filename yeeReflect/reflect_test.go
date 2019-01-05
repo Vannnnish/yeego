@@ -4,8 +4,8 @@
 package yeeReflect_test
 
 import (
-	"github.com/yeeyuntech/yeego"
-	"github.com/yeeyuntech/yeego/yeeReflect"
+	"yeego"
+	"yeego/yeeReflect"
 	"reflect"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestGetTypeFullName(t *testing.T) {
 	yeego.Equal(yeeReflect.GetTypeFullName(reflect.TypeOf("")), "string")
 	yeego.Equal(yeeReflect.GetTypeFullName(reflect.TypeOf(1)), "int")
 	yeego.Equal(yeeReflect.GetTypeFullName(reflect.TypeOf(&a{})),
-		"_/Users/angelina/Workspace/golib/src/github.com/yeeyuntech/yeego/yeeReflect_test.a")
+		"_/Users/angelina/Workspace/golib/src/yeego/yeeReflect_test.a")
 }
 
 func TestIndirectType(t *testing.T) {

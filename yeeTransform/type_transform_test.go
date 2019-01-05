@@ -5,8 +5,8 @@
 package yeeTransform_test
 
 import (
-	"github.com/yeeyuntech/yeego"
-	"github.com/yeeyuntech/yeego/yeeTransform"
+	"yeego"
+	"yeego/yeeTransform"
 	"testing"
 )
 

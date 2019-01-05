@@ -6,7 +6,7 @@ package yeeAlidayu
 
 import (
 	"fmt"
-	"github.com/yeeyuntech/yeego/third/yeeAlidayu/request"
+	"yeego/third/yeeAlidayu/request"
 )
 
 /*

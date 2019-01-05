@@ -8,7 +8,7 @@ import (
 	"errors"
 	"github.com/nfnt/resize"
 	"github.com/oliamb/cutter"
-	"github.com/yeeyuntech/yeego/yeeFile"
+	"yeego/yeeFile"
 	"image"
 	"image/draw"
 	"image/gif"

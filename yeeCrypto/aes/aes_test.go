@@ -5,7 +5,7 @@ package aes
 
 import (
 	"fmt"
-	"github.com/yeeyuntech/yeego"
+	"yeego"
 	"testing"
 )
 

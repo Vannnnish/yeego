@@ -8,7 +8,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/yeeyuntech/yeego/yeeSql/MysqlAst"
+	"yeego/yeeSql/MysqlAst"
 	"strings"
 )
 

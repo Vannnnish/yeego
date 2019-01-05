@@ -6,7 +6,7 @@ package yeeSql
 
 import (
 	"fmt"
-	"github.com/yeeyuntech/yeego/yeeStrings"
+	"yeego/yeeStrings"
 	"sort"
 	"strings"
 )
