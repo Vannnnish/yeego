@@ -9,6 +9,6 @@ require (
 	github.com/oliamb/cutter v0.2.2
 	github.com/spf13/viper v1.3.1
 	github.com/tealeg/xlsx v1.0.3
-	golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc
-	google.golang.org/appengine v1.3.0 // indirect
+	golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
+	google.golang.org/appengine v1.3.0
 )
