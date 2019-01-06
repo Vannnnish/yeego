@@ -33,3 +33,4 @@ testdata
 *.pem
 
 vendor
+/go.sum
