@@ -1,4 +1,4 @@
-module yeego
+module github.com/vannnnish/yeego
 
 require (
 	github.com/BurntSushi/toml v0.3.1
