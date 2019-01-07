@@ -6,7 +6,7 @@ package yeeSql
 
 import (
 	"fmt"
-	"yeego/yeeStrconv"
+	"github.com/vannnnish/yeego/yeeStrconv"
 	"strconv"
 	"strings"
 )

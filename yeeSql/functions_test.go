@@ -5,8 +5,8 @@
 package yeeSql_test
 
 import (
-	"yeego"
-	"yeego/yeeSql"
+	"github.com/vannnnish/yeego"
+	"github.com/vannnnish/yeego/yeeSql"
 	"testing"
 )
 

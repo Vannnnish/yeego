@@ -8,7 +8,7 @@ package yeeCache
 
 import (
 	"encoding/json"
-	"yeego/yeeFile"
+	"github.com/vannnnish/yeego/yeeFile"
 	"time"
 )
 

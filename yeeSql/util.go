@@ -6,7 +6,7 @@ package yeeSql
 
 import (
 	"fmt"
-	"yeego"
+	"github.com/vannnnish/yeego"
 	"strconv"
 )
 

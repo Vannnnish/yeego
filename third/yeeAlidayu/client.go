@@ -9,7 +9,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	"yeego/third/yeeAlidayu/request"
+	"github.com/vannnnish/yeego/third/yeeAlidayu/request"
 	"io"
 	"io/ioutil"
 	"net/http"

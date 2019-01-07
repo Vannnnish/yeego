@@ -17,6 +17,8 @@ package yeeTemplate
 import (
 	"errors"
 	"fmt"
+	"github.com/vannnnish/yeego/yeeFile"
+	"github.com/vannnnish/yeego/yeeStrings"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -25,9 +27,6 @@ import (
 	"regexp"
 	"strings"
 	"sync"
-
-	"yeego/yeeFile"
-	"yeego/yeeStrings"
 )
 
 var (

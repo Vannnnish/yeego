@@ -3,7 +3,7 @@ package yeeJpush
 import (
 	"encoding/base64"
 	"encoding/json"
-	"yeego/third/yeeJpush/common"
+	"github.com/vannnnish/yeego/third/yeeJpush/common"
 )
 
 const (

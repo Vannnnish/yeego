@@ -7,7 +7,7 @@ package yeeCache
 import (
 	"testing"
 	"time"
-	"yeego"
+	"github.com/vannnnish/yeego"
 )
 
 func TestFileTtlCache(t *testing.T) {

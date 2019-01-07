@@ -6,7 +6,7 @@ package yeeImage
 
 import (
 	"testing"
-	"yeego"
+	"github.com/vannnnish/yeego"
 )
 
 const (

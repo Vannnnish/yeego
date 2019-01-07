@@ -5,8 +5,8 @@
 package yeeCmd_test
 
 import (
-	"yeego"
-	"yeego/yeeCmd"
+	"github.com/vannnnish/yeego"
+	"github.com/vannnnish/yeego/yeeCmd"
 	"testing"
 )
 

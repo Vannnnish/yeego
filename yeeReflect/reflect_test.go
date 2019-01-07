@@ -4,8 +4,8 @@
 package yeeReflect_test
 
 import (
-	"yeego"
-	"yeego/yeeReflect"
+	"github.com/vannnnish/yeego"
+	"github.com/vannnnish/yeego/yeeReflect"
 	"reflect"
 	"testing"
 )

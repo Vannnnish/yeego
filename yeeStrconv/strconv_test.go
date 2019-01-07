@@ -5,7 +5,7 @@
 package yeeStrconv
 
 import (
-	"yeego"
+	"github.com/vannnnish/yeego"
 	"testing"
 )
 

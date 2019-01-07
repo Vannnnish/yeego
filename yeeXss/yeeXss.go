@@ -5,7 +5,7 @@
 package yeeXss
 
 import (
-	"yeego/yeeStrings"
+	"github.com/vannnnish/yeego/yeeStrings"
 	"regexp"
 )
 

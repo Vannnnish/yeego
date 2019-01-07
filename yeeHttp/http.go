@@ -5,7 +5,7 @@
 package yeeHttp
 
 import (
-	"yeego/yeeFile"
+	"github.com/vannnnish/yeego/yeeFile"
 	"io"
 	"io/ioutil"
 	"net/http"

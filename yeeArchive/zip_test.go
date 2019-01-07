@@ -5,7 +5,7 @@
 package yeeArchive
 
 import (
-	"yeego"
+	"github.com/vannnnish/yeego"
 	"os"
 	"testing"
 )

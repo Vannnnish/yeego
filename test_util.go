@@ -7,7 +7,7 @@
 package yeego
 
 import (
-	"yeego/yeeReflect"
+	"github.com/vannnnish/yeego/yeeReflect"
 	"reflect"
 )
 
