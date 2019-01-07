@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"sort"
 	"strconv"
 	"time"
 )
@@ -162,4 +163,21 @@ func StructToMapByTag(obj interface{}) map[string]interface{} {
 		data[t.Field(i).Tag.Get("json")] = v.Field(i).Interface()
 	}
 	return data
+}
+
+func MapToString(params map[string]string) string {
+	var str string
+	ks := make([]string, 0, len(params))
+	for k := range params {
+		ks = append(ks, k)
+	}
+	sort.Strings(ks)
+	for _, k := range ks {
+		v := params[k]
+		if v == "" {
+			continue
+		}
+		str += v
+	}
+	return str
 }

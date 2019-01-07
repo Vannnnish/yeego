@@ -5,8 +5,8 @@
 package yeeTransform_test
 
 import (
-	"yeego"
-	"yeego/yeeTransform"
+	"github.com/vannnnish/yeego"
+	"github.com/vannnnish/yeego/yeeTransform"
 	"testing"
 )
 
@@ -57,4 +57,8 @@ func TestMapToStruct(t *testing.T) {
 	yeego.Equal(err, nil)
 	yeego.Equal(s.A, "A")
 	yeego.Equal(s.B, "B")
+}
+
+func TestMapToString(t *testing.T) {
+	yeego.Print(yeeTransform.MapToString(map[string]string{"Hello": "你好", "Hi": "你在干嘛"}))
 }
