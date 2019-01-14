@@ -5,6 +5,7 @@
 package yeeHttp
 
 import (
+	"crypto/tls"
 	"github.com/vannnnish/yeego/yeeFile"
 	"io"
 	"io/ioutil"
@@ -37,6 +38,15 @@ func NewRequest(method, url string) *RequestWrapper {
 	}
 	return &RequestWrapper{request: req}
 }
+func NewRequestWithBody(method, url string, body io.Reader) *RequestWrapper {
+	req, err := http.NewRequest(method, url, body)
+	if err != nil {
+		return nil
+	}
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("cache-control", "no-cache")
+	return &RequestWrapper{request: req}
+}
 
 // Get
 // 初始化get请求
@@ -48,6 +58,12 @@ func Get(url string) *RequestWrapper {
 // 初始化post请求
 func Post(url string) *RequestWrapper {
 	return NewRequest("POST", url)
+}
+
+// 发起Payload请求
+func PayloadRequest(method, url, data string) *RequestWrapper {
+	payload := strings.NewReader(data)
+	return NewRequestWithBody(method, url, payload)
 }
 
 func (r *RequestWrapper) Query(query string) *RequestWrapper {
@@ -186,4 +202,22 @@ func (r *RequestWrapper) Response() (*http.Response, error) {
 func Download(url, filename string) (size int64, err error) {
 	size, err = Get(url).Exec().ToFile(filename)
 	return
+}
+
+// 忽略tls认证
+func (r *RequestWrapper) SkipVerify() *RequestWrapper {
+	if r.client == nil {
+		client := http.DefaultClient
+		tr := &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
+		client.Transport = tr
+		r.client = client
+	} else {
+		tr := &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
+		r.client.Transport = tr
+	}
+	return r
 }
