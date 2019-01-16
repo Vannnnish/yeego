@@ -27,7 +27,7 @@ logs
 .DS_Store
 .idea
 cache
-yeeFile/data
+file/data
 *.gz
 testdata
 *.pem

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"github.com/vannnnish/yeego/yeeFile"
+	"github.com/vannnnish/yeego/file"
 	"os"
 	"path/filepath"
 	"strings"
@@ -56,9 +56,9 @@ func GetCurrentPath(dirPath string) string {
 		panic(err)
 	}
 	appDirPath := filepath.Join(appPath, dirPath)
-	if !yeeFile.FileExists(appDirPath) {
+	if !file.FileExists(appDirPath) {
 		appDirPath = filepath.Join(workPath, dirPath)
-		if !yeeFile.FileExists(appDirPath) {
+		if !file.FileExists(appDirPath) {
 			panic(fmt.Sprintf("dirPath:[%s] can not find in %s and %s", dirPath, appPath, workPath))
 		}
 	}
