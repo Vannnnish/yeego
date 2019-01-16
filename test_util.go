@@ -7,7 +7,7 @@
 package yeego
 
 import (
-	"github.com/vannnnish/yeego/yeeReflect"
+	"github.com/vannnnish/yeego/yeereflect"
 	"reflect"
 )
 
@@ -45,7 +45,7 @@ func isEqual(a interface{}, b interface{}) bool {
 	}
 	va := reflect.ValueOf(a)
 	vb := reflect.ValueOf(b)
-	if yeeReflect.IsNil(va) && yeeReflect.IsNil(vb) {
+	if yeereflect.IsNil(va) && yeereflect.IsNil(vb) {
 		return true
 	}
 	return false

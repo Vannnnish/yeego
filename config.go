@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"github.com/vannnnish/yeego/yeeFile"
+	"github.com/vannnnish/yeego/yeefile"
 	"os"
 	"path/filepath"
 	"strings"
@@ -28,14 +28,14 @@ func MustInitConfig(filePath string, fileName string) {
 		Config.AddConfigPath(filePath + "/")
 	}
 	if err := Config.ReadInConfig(); err != nil {
-		panic(fmt.Errorf("Fatal error config file: %s \n", err).Error())
+		panic(fmt.Errorf("Fatal error config yeefile: %s \n", err).Error())
 	}
 }
 
 func WatchConfig() {
 	Config.WatchConfig()
 	Config.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("Config file changed:", e.Name)
+		fmt.Println("Config yeefile changed:", e.Name)
 	})
 }
 
@@ -56,9 +56,9 @@ func GetCurrentPath(dirPath string) string {
 		panic(err)
 	}
 	appDirPath := filepath.Join(appPath, dirPath)
-	if !yeeFile.FileExists(appDirPath) {
+	if !yeefile.FileExists(appDirPath) {
 		appDirPath = filepath.Join(workPath, dirPath)
-		if !yeeFile.FileExists(appDirPath) {
+		if !yeefile.FileExists(appDirPath) {
 			panic(fmt.Sprintf("dirPath:[%s] can not find in %s and %s", dirPath, appPath, workPath))
 		}
 	}
