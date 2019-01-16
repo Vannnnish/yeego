@@ -33,7 +33,7 @@ func (t1 MysqlFieldType) Equal(t2 MysqlFieldType) bool {
 func (t1 MysqlFieldType) String() string {
 	out := string(t1.DataType)
 	if t1.StringLength != 0 {
-		out += "(" + yeestrconv.Itoa(t1.StringLength) + ")"
+		out += "(" + strconv.Itoa(t1.StringLength) + ")"
 	}
 	if t1.IsUnsigned {
 		out += " unsigned"
@@ -49,7 +49,7 @@ func (t1 MysqlFieldType) String() string {
 	}
 	switch t1.DataType {
 	case MysqlDataTypeInt32, MysqlDataTypeInt8, MysqlDataTypeFloat:
-		out += " DEFAULT " + yeestrconv.Itoa(yeestrconv.AtoIDefault0(t1.Default))
+		out += " DEFAULT " + strconv.Itoa(yeestrconv.AtoIDefault0(t1.Default))
 	case MysqlDataTypeVarchar, MysqlDataTypeDateTime:
 		// TODO 正确的序列化方式
 		out += " DEFAULT " + fmt.Sprintf("%#v", t1.Default)

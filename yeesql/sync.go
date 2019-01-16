@@ -91,7 +91,7 @@ func (t DbType) GetMysqlFieldType() MysqlFieldType {
 func MustVerifyTableConfig(table Table) {
 	fieldNameMap := map[string]bool{}
 	for name := range table.FieldList {
-		name = yeestrings.ToLower(name)
+		name = strings.ToLower(name)
 		if fieldNameMap[name] {
 			panic(fmt.Errorf("[MustVerifyTableConfig] Table[%s] Field[%s] 两个字段名只有大小写不一致",
 				table.Name, name))
@@ -175,10 +175,10 @@ func MustCreateTable(table Table) {
 		for _, key := range group {
 			uniqueKeyList = append(uniqueKeyList, "`"+key+"`")
 		}
-		uniqueSql += yeestrings.Join(uniqueKeyList, ",") + ")"
+		uniqueSql += strings.Join(uniqueKeyList, ",") + ")"
 		sqlItemList = append(sqlItemList, uniqueSql)
 	}
-	sql += yeestrings.Join(sqlItemList, ",\n")
+	sql += strings.Join(sqlItemList, ",\n")
 	sql += "\n) engine=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin"
 	MustExec(sql)
 }
@@ -202,12 +202,12 @@ func MustModifyTable(table Table) {
 	// 数据库表字段名称
 	dbFieldNameList := []string{}
 	for _, row := range MysqlFieldTypeList {
-		dbFieldNameList = append(dbFieldNameList, yeestrings.ToLower(row.Name))
+		dbFieldNameList = append(dbFieldNameList, strings.ToLower(row.Name))
 	}
 	for _, f1 := range dbFieldNameList {
 		found := false
 		for f2 := range table.FieldList {
-			if yeestrings.EqualFold(f1, f2) {
+			if strings.EqualFold(f1, f2) {
 				found = true
 				break
 			}
@@ -217,7 +217,7 @@ func MustModifyTable(table Table) {
 		}
 	}
 	for fieldName, fieldType := range table.FieldList {
-		if !yeestrings.IsInSlice(dbFieldNameList, yeestrings.ToLower(fieldName)) {
+		if !yeestrings.IsInSlice(dbFieldNameList, strings.ToLower(fieldName)) {
 			MustAddField(table, fieldName)
 			continue
 		}
@@ -230,7 +230,7 @@ func MustModifyTable(table Table) {
 				}
 				break
 			}
-			if yeestrings.EqualFold(row.Name, fieldName) {
+			if strings.EqualFold(row.Name, fieldName) {
 				fmt.Printf("[yeesql.SyncTable] Table[%s] OldField[%s] NewField[%s] 数据库字段大小写不一致\n",
 					table.Name, fieldName, row.Name)
 				break
