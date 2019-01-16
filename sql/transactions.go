@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"github.com/vannnnish/yeego/sql/MysqlAst"
+	"github.com/vannnnish/yeego/sql/ast"
 	"strings"
 )
 
@@ -150,18 +150,18 @@ func (tx *yeeTx) GetAllInTable(tableName string) ([]map[string]string, error) {
 	return tx.Query(getSql)
 }
 
-func (tx *yeeTx) RunSelectCommand(selectCommand *MysqlAst.SelectCommand) (mapValue []map[string]string, err error) {
+func (tx *yeeTx) RunSelectCommand(selectCommand *ast.SelectCommand) (mapValue []map[string]string, err error) {
 	prepareSql, parameterList := selectCommand.GetPrepareParameter()
 	mapValue, err = tx.Query(prepareSql, argsStringToInterface(parameterList...)...)
 	return
 }
 
 func (tx *yeeTx) IsExist(tableName string, row map[string]string) bool {
-	where := MysqlAst.NewAndWhereCondition()
+	where := ast.NewAndWhereCondition()
 	for k, v := range row {
 		where = where.AddPrepare(fmt.Sprintf("%s=?", k), v)
 	}
-	selectCommand := MysqlAst.NewSelectCommand().From(tableName).WhereObj(where)
+	selectCommand := ast.NewSelectCommand().From(tableName).WhereObj(where)
 	info, err := tx.RunSelectCommand(selectCommand)
 	if err != nil || len(info) == 0 {
 		return false

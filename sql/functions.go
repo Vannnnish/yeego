@@ -8,7 +8,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/vannnnish/yeego/sql/MysqlAst"
+	"github.com/vannnnish/yeego/sql/ast"
 	"strings"
 )
 
@@ -255,13 +255,13 @@ func MustGetAllInTable(tableName string) []map[string]string {
 
 // RunSelectCommand
 // 执行一条selectCommand
-func RunSelectCommand(selectCommand *MysqlAst.SelectCommand) (mapValue []map[string]string, err error) {
+func RunSelectCommand(selectCommand *ast.SelectCommand) (mapValue []map[string]string, err error) {
 	prepareSql, parameterList := selectCommand.GetPrepareParameter()
 	mapValue, err = Query(prepareSql, argsStringToInterface(parameterList...)...)
 	return
 }
 
-func MustRunSelectCommand(selectCommand *MysqlAst.SelectCommand) (mapValue []map[string]string) {
+func MustRunSelectCommand(selectCommand *ast.SelectCommand) (mapValue []map[string]string) {
 	mapValue, err := RunSelectCommand(selectCommand)
 	if err != nil {
 		panic(err)
@@ -272,11 +272,11 @@ func MustRunSelectCommand(selectCommand *MysqlAst.SelectCommand) (mapValue []map
 // IsExist
 // 根据传入的map判断表中是否存在
 func IsExist(tableName string, row map[string]string) bool {
-	where := MysqlAst.NewAndWhereCondition()
+	where := ast.NewAndWhereCondition()
 	for k, v := range row {
 		where = where.AddPrepare(fmt.Sprintf("%s=?", k), v)
 	}
-	selectCommand := MysqlAst.NewSelectCommand().From(tableName).WhereObj(where)
+	selectCommand := ast.NewSelectCommand().From(tableName).WhereObj(where)
 	info, err := RunSelectCommand(selectCommand)
 	if err != nil || len(info) == 0 {
 		return false

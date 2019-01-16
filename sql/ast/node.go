@@ -2,7 +2,7 @@
  * Created by angelina on 2017/4/17.
  */
 
-package MysqlAst
+package ast
 
 type Node interface {
 	GetText() string
