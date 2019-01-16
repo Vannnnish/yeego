@@ -34,9 +34,9 @@ func Print(objList ...interface{}) {
 	if !ok {
 		return
 	}
-	//for i := len(file) - 1; i > 0; i-- {
-	//	if file[i] == '/' {
-	//		file = file[i+1:]
+	//for i := len(yeefile) - 1; i > 0; i-- {
+	//	if yeefile[i] == '/' {
+	//		yeefile = yeefile[i+1:]
 	//		break
 	//	}
 	//}

@@ -26,7 +26,7 @@ _testmain.go
 logs
 .DS_Store
 .idea
-file/data
+yeefile/data
 *.gz
 testdata
 *.pem
