@@ -26,7 +26,6 @@ _testmain.go
 logs
 .DS_Store
 .idea
-cache
 file/data
 *.gz
 testdata
