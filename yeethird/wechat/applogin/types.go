@@ -18,7 +18,7 @@ type LoginReturn struct {
 	RefreshToken string `json:"refresh_token"`
 	OpenId       string `json:"openid"`
 	Scope        string `json:"scope"`
-	UnionId      string `json:"string"`
+	UnionId      string `json:"unionid"`
 }
 
 //  用户信息
