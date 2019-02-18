@@ -39,6 +39,7 @@ type WechatOrder struct {
 	SpbillCreateIp string `xml:"spbill_create_ip"` // 终端IP
 	NotifyUrl      string `xml:"notify_url"`       // 接收微信支付异步通知回调地址
 	TradeType      string `xml:"trade_type"`       // 交易类型 取 APP
+
 	// 非必填
 	DeviceInfo string `xml:"device_info"` // 设备号
 	SignType   string `xml:"sign_type"`   // 签名类型  默认MD5
@@ -49,6 +50,20 @@ type WechatOrder struct {
 	GoodsTag   string `xml:"goods_tag"`   // 订单优惠标记
 	LimitPay   string `xml:"limit_pay"`   // 指定支付方式，   no_credit--指定不能使用信用卡支付
 	Receipt    string `xml:"receipt"`     // 开发票入口开放标识   Y，传入Y时，支付成功消息和支付详情页将出现开票入口。需要在微信支付商户平台或微信公众平台开通电子发票功能，传此字段才可生效
+}
+
+type AppSignStruct struct {
+	// 必填
+	AppId          string `xml:"appid"`            // appId
+	MchId          string `xml:"mch_id"`           // 商户号
+	NonceStr       string `xml:"nonce_str"`        // 随机字符串
+	Sign           string `xml:"sign"`             // 签名
+	Body           string `xml:"body"`             // 商品或支付单简要描述
+	OutTradeNo     string `xml:"out_trade_no"`     // 商户订单号
+	TotalFee       string `xml:"total_fee"`        // 总金额(分)
+	SpbillCreateIp string `xml:"spbill_create_ip"` // 终端IP
+	NotifyUrl      string `xml:"notify_url"`       // 接收微信支付异步通知回调地址
+	TradeType      string `xml:"trade_type"`       // 交易类型 取 APP
 }
 
 // 统一下单返回数据
@@ -143,7 +158,7 @@ type Order struct {
 	UserId     string // 用户id
 }
 
-// JS下单返回数据结构
+// app下单返回数据结构
 type PreOrder struct {
 	AppId     string
 	TimeStamp string
