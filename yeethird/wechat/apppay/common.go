@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-// 生成JS调用订单
+// app下单
 func GenerateWechatOrder(appId, mchId, nonceStr, body, outTradeNo, totalFee, spbillCreateIp, notifyUrl, tradeType, key string) PreOrder {
 	// 微信统一下单
 	wechatOrder := &AppSignStruct{
@@ -48,15 +48,15 @@ func GenerateWechatOrder(appId, mchId, nonceStr, body, outTradeNo, totalFee, spb
 	response, err := ioutil.ReadAll(r.Body)
 	wechatResponse := WechatResponse{}
 	xml.Unmarshal(response, &wechatResponse)
-	if wechatResponse.ReturnCode != "SUCCESS" {
-		panic(wechatResponse.ReturnMsg)
-	}
 	preOrder := PreOrder{
 		AppId:     appId,
 		TimeStamp: strconv.FormatInt(time.Now().Unix(), 10),
 		NonceStr:  yeerand.RandString(16),
 		SignType:  "MD5",
-		Package:   "prepay_id=",
+		Package:   wechatResponse.PrepayId,
+	}
+	if wechatResponse.ReturnCode == "SUCCESS" {
+		return preOrder
 	}
 	return preOrder
 }
