@@ -127,3 +127,19 @@ func StringToStringArray(s, sep string) []string {
 func StringArrayToString(arr []string, sep string) string {
 	return strings.Join(arr, sep)
 }
+
+// 将第一个字母变成小写或者大写
+func ChangeFirstLetter(lowerOrUpper string, str string) string {
+	length := len(str)
+	if length == 0 {
+		return ""
+	}
+	firstStr := str[0:1]
+	restStr := str[1:]
+	if lowerOrUpper == "lower" {
+		firstStr = strings.ToLower(firstStr)
+	} else {
+		firstStr = strings.ToUpper(restStr)
+	}
+	return firstStr + restStr
+}

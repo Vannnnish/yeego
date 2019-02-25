@@ -33,3 +33,4 @@ testdata
 
 vendor
 /go.sum
+/conf/conf.toml

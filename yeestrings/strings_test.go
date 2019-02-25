@@ -5,6 +5,7 @@
 package yeestrings_test
 
 import (
+	"fmt"
 	"github.com/vannnnish/yeego"
 	"github.com/vannnnish/yeego/yeestrings"
 	"testing"
@@ -66,3 +67,11 @@ func TestStringArrayToString(t *testing.T) {
 	strArr = []string{}
 	yeego.Equal(yeestrings.StringArrayToString(strArr, ","), "")
 }
+
+func TestChangeFirstLetter(t *testing.T) {
+	fmt.Println(yeestrings.ChangeFirstLetter("lower", "Abc"))
+	fmt.Println(yeestrings.ChangeFirstLetter("upper", "abc"))
+	fmt.Println(yeestrings.ChangeFirstLetter("lower", "好饿Ab好"))
+}
+
+//
