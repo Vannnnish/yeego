@@ -12,7 +12,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/oliamb/cutter v0.2.2
-	github.com/satori/go.uuid v1.2.0
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/spf13/viper v1.3.1
 	github.com/tealeg/xlsx v1.0.3
 	github.com/tobyzxj/uuid v0.0.0-20140223123307-aa0153c14395 // indirect

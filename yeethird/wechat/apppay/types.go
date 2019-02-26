@@ -1,5 +1,5 @@
 /*
-@Time : 2019-01-17 15:46 
+@Time : 2019-01-17 15:46
 @Author : vannnnish
 @File : types
 */
@@ -60,7 +60,7 @@ type AppSignStruct struct {
 	Sign           string `xml:"sign"`             // 签名
 	Body           string `xml:"body"`             // 商品或支付单简要描述
 	OutTradeNo     string `xml:"out_trade_no"`     // 商户订单号
-	TotalFee       string `xml:"total_fee"`        // 总金额(分)
+	TotalFee       int    `xml:"total_fee"`        // 总金额(分)
 	SpbillCreateIp string `xml:"spbill_create_ip"` // 终端IP
 	NotifyUrl      string `xml:"notify_url"`       // 接收微信支付异步通知回调地址
 	TradeType      string `xml:"trade_type"`       // 交易类型 取 APP
@@ -160,12 +160,8 @@ type Order struct {
 
 // app下单返回数据结构
 type PreOrder struct {
-	AppId     string
 	TimeStamp string
-	NonceStr  string
-	SignType  string
-	Package   string
-	PaySign   string
+	PrepayId  string
 }
 
 // 微信退款需要的结构参数
@@ -192,7 +188,7 @@ type WechatRefundResult struct {
 }
 
 // 支付成功返回信息
-type PaySuccessInfo struct {
+type PaySuccessInfoResponse struct {
 	Appid          string `xml:"appid"`
 	Bank_type      string `xml:"bank_type"`      // 银行类型
 	Cash_fee       string `xml:"cash_fee"`       // 现金支付金额订单现金支付金额
@@ -220,4 +216,39 @@ type JSConfig struct {
 	NonceStr  string
 	TimeStamp string
 	Sign      string
+}
+
+// 提现接口
+type WechatWithdrawRequest struct {
+	Mch_appid        string `xml:"mch_appid"`        // 商户号id appid
+	Mchid            string `xml:"mchid"`            // 商户号
+	Nonce_str        string `xml:"nonce_str"`        // 随机字符串
+	Sign             string `xml:"sign"`             // 签名
+	Partner_trade_no string `xml:"partner_trade_no"` // 商户订单号
+	Openid           string `xml:"openid"`           //
+	Check_name       string `xml:"check_name"`       // NO_CHECK：不校验真实姓名  FORCE_CHECK：强校验真实姓名
+	Amount           int    `xml:"amount"`           // 金额
+	Desc             string `xml:"desc"`             // 企业付款备注
+	Spbill_create_ip string `xml:"spbill_create_ip"` // ip地址
+}
+
+// 查询支付结果
+type QueryWechatRequest struct {
+	Appid        string `xml:"appid"`
+	Mch_id       string `xml:"mch_id"`
+	Out_trade_no string `xml:"out_trade_no"`
+	Nonce_str    string `xml:"nonce_str"`
+	Sign         string `xml:"sign"`
+}
+
+// 支付结果
+type QueryWechatResponse struct {
+	Return_code  string `xml:"return_code"`
+	Return_msg   string `xml:"return_msg"`
+	Appid        string `xml:"appid"`
+	Mch_id       string `xml:"mch_id"`
+	Nonce_str    string `xml:"nonce_str"`
+	Result_code  string `xml:"result_code"` // SUCCESS 或者 FAIL
+	Err_code     string `xml:"err_code"`
+	Err_code_des string `xml:"err_code_des"`
 }

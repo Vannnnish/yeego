@@ -1,0 +1,8 @@
+[alisms]
+AccessKey = "xxx"
+AccessSecret = "xxx"
+
+[wechat]
+AppId="xxx"
+MchId="xxx"
+Key="xxx"
