@@ -11,6 +11,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"github.com/vannnnish/yeego/yeestrconv"
 	"reflect"
 	"sort"
 	"unicode"
@@ -29,7 +30,13 @@ func dataToMap(obj interface{}) map[string]string {
 			a := []rune(tmpKey)
 			a[0] = unicode.ToLower(a[0])
 			tmpKey = string(a)
-			values[tmpKey] = val.(string)
+			strVal, ok := val.(string)
+			if !ok {
+				intVal := val.(int)
+				values[tmpKey] = yeestrconv.FormatInt(intVal)
+			} else {
+				values[tmpKey] = strVal
+			}
 		}
 	}
 	return values
