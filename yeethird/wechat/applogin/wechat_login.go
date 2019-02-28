@@ -54,6 +54,7 @@ func (app AppLogin) GetAccessToken(code string) (LoginReturn, error) {
 	if err != nil {
 		return ret, err
 	}
+	fmt.Println("原始数据", string(response))
 	if ret.OpenId == "" || ret.UnionId == "" {
 		var errData wechat.ErrorData
 		err := json.Unmarshal(response, &errData)
