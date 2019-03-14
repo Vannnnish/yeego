@@ -251,4 +251,5 @@ type QueryWechatResponse struct {
 	Result_code  string `xml:"result_code"` // SUCCESS 或者 FAIL
 	Err_code     string `xml:"err_code"`
 	Err_code_des string `xml:"err_code_des"`
+	Trade_state  string `xml:"trade_state"`
 }

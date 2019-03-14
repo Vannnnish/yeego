@@ -22,7 +22,7 @@ var wechatTransferURl = "https://api.mch.weixin.qq.com/mmpaymkttransfers/promoti
 
 // 微信转账
 // checkName: NO_CHECK 或者 FORCE_CHECK  如果是 FORCE_CHECK 那么 re_user_name 不能为空
-func WechatTransfer(mchAppid, mchid, openid, checkName string, amount int, partnerTradeNo, desc, splillCreateIp string, key string) error {
+func WechatTransfer(mchAppid, mchid, openid, checkName string, amount int, partnerTradeNo, desc, splillCreateIp string, key string, certFile, keyFile string) error {
 
 	noceStr := yeerand.RandString(32)
 	wechatTransfer := &WechatWithdrawRequest{
@@ -43,7 +43,7 @@ func WechatTransfer(mchAppid, mchid, openid, checkName string, amount int, partn
 	if err != nil {
 		return err
 	}
-	client, err := yeeparse.NewTLSHttpClient("./apiclient_cert.pem", "./apiclient_key.pem")
+	client, err := yeeparse.NewTLSHttpClient(certFile, keyFile)
 	if err != nil {
 		return err
 	}
@@ -63,9 +63,9 @@ func WechatTransfer(mchAppid, mchid, openid, checkName string, amount int, partn
 	if err := xml.Unmarshal(response, &wechatTransferReturn); err != nil {
 		return err
 	}
-	if wechatTransferReturn.ResultCode != "SUCCESS" {
+	if wechatTransferReturn.ResultCode == "SUCCESS" {
 		return nil
 	} else {
-		return errors.New(wechatTransferReturn.ReturnMsg)
+		return errors.New(wechatTransferReturn.ErrCodeDes)
 	}
 }
